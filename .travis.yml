@@ -17,10 +17,10 @@ after_sucess:
 # Log to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # push docker images into Docker Hub  
-- docker push salahkmt/complex-fib-client
-- docker push salahkmt/complex-fib-nginx 
-- docker push salahkmt/complex-fib-server
-- docker push salahkmt/complex-fib-worker
+  - docker push salahkmt/complex-fib-client
+  - docker push salahkmt/complex-fib-nginx 
+  - docker push salahkmt/complex-fib-server
+  - docker push salahkmt/complex-fib-worker
 
 #deploy : 
 #  provider : elasticbeanstalk
