@@ -14,6 +14,13 @@ after_sucess:
   - docker build -t salahkmt/complex-fib-nginx ./nginx
   - docker build -t salahkmt/complex-fib-server ./server
   - docker build -t salahkmt/complex-fib-worker ./worker
+# Log to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+# push docker images into Docker Hub  
+- docker push salahkmt/complex-fib-client
+- docker push salahkmt/complex-fib-nginx 
+- docker push salahkmt/complex-fib-server
+- docker push salahkmt/complex-fib-worker
 
 #deploy : 
 #  provider : elasticbeanstalk
