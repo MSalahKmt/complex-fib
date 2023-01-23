@@ -1,0 +1,28 @@
+language: generic 
+sudo: required
+services:
+  - docker
+
+before_install: 
+  - docker build -t salahkmt/complex-fib -f ./client/Dockerfile.dev ./client/
+
+script : 
+  - docker run -e CI=true salahkmt/complex-fib npm test
+
+after_sucess:
+  - docker build -t salahkmt/complex-fib-client ./client
+  - docker build -t salahkmt/complex-fib-nginx ./nginx
+  - docker build -t salahkmt/complex-fib-server ./server
+  - docker build -t salahkmt/complex-fib-worker ./worker
+
+#deploy : 
+#  provider : elasticbeanstalk
+#  region : "us-east-2"
+#  app : "docker-react-test"
+#  env : "Dockerreacttest-env"
+#  bucket_name : "elasticbeanstalk-us-east-2-970866749731"
+#  bucket_path : "docker-react-test"
+#  on : 
+#    branch : main
+#  access_key_id: "$AWS_ACCESS_KEY"
+#  secret_access_key: "$AWS_SECRET_KEY"
