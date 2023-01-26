@@ -22,14 +22,14 @@ after_sucess:
   - docker push salahkmt/complex-fib-server
   - docker push salahkmt/complex-fib-worker
 
-#deploy : 
-#  provider : elasticbeanstalk
-#  region : "us-east-2"
-#  app : "docker-react-test"
-#  env : "Dockerreacttest-env"
-#  bucket_name : "elasticbeanstalk-us-east-2-970866749731"
-#  bucket_path : "docker-react-test"
-#  on : 
-#    branch : main
-#  access_key_id: "$AWS_ACCESS_KEY"
-#  secret_access_key: "$AWS_SECRET_KEY"
+deploy : 
+  provider : elasticbeanstalk
+  region : "us-east-2"
+  app : "complex-fibonacci"
+  env : "Complexfibonacci-env"
+  bucket_name : "elasticbeanstalk-us-east-2-970866749731"
+  bucket_path : "complex-fibonacci"
+  on : 
+    branch : main
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
